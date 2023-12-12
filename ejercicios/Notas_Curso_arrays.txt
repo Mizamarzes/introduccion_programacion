@@ -1,0 +1,95 @@
+Ejercicios Psseint
+
+Funcion cargarNotas (notas, numEstudiantes )
+	
+	Para i<-0 Hasta numEstudiantes-1 Con Paso 1 Hacer
+		notas[i]<-1+azar(10);
+	FinPara
+FinFuncion
+
+Funcion listarNotas (notas, numEstudiantes )
+	
+	Para i<-0 Hasta numEstudiantes-1 Con Paso 1 Hacer
+		Escribir "Nota del estudiante: ",i," : ",notas[i];
+	FinPara
+FinFuncion
+
+Funcion promedio <- promedioNotas(notas, numEstudiantes)
+	
+	Definir sumaNotas Como Entero;
+	Definir promedio Como Real;
+	promedio<-0.0;
+	suma<-0;
+	
+	Para i<-0 Hasta numEstudiantes-1 Con Paso 1 Hacer
+		suma<-suma+notas[i];
+	FinPara
+    
+	promedio<-suma/numEstudiantes+1;
+FinFuncion
+
+Funcion nota <- obtenerNotaMayor (notas,numEstudiantes)
+	
+	Definir nota Como Entero;
+	nota<-0;
+	
+	Para i<-0 Hasta numEstudiantes-1 Con Paso 1 Hacer
+		Si nota<notas[i] Entonces
+			nota<-notas[i];
+		FinSi
+	FinPara
+FinFuncion
+
+Funcion nota <- obtenerNotaMenor (notas,numEstudiantes)
+	
+	Definir nota Como Entero;
+	nota<-1;
+	
+	Para i<-0 Hasta numEstudiantes-1 Con Paso 1 Hacer
+		Si nota>notas[i] Entonces
+			nota<-notas[i];
+		FinSi
+	FinPara
+FinFuncion
+
+Funcion totalReprobados <- obtenerTotalReprobados(notas, numEstudiantes)
+
+	Definir totalReprobados Como Entero;	
+	totalReprobados<-0;
+	
+	Para i<-0 Hasta numEstudiantes-1 Con Paso 1 Hacer
+		Si notas[i]<6 Entonces
+			totalReprobados<-totalReprobados+1;
+		FinSi
+	FinPara
+FinFuncion
+
+Proceso NotasCurso
+	Definir listaNotas,indice Como Entero;
+	Definir promedio Como Real;
+	Definir notaMayor Como Entero;
+	Definir notaMenor Como Entero;
+	Definir totalReprobados Como Entero;
+	Definir totalAprobados Como Entero;
+	Dimension listaNotas[30];
+	promedio<-0.0;
+	notaMayor<-0;
+	notaMenor<-0;
+	totalReprobados<-0;
+	totalAprobados<-0;	
+	cargarNotas(listaNotas,30);
+	listarNotas(listaNotas,30);	
+	promedio<-redon(promedioNotas(listaNotas,30));
+	notaMayor<-obtenerNotaMayor(listaNotas,30);
+	notaMenor<-obtenerNotaMenor(listaNotas,30);
+	totalReprobados<-obtenerTotalReprobados(listaNotas,30);
+	totalAprobados<-30-totalReprobados;
+	Escribir "El promedio de la nota es: ", promedio;
+	Escribir "La nota con mayor calificación fue de: ", notaMayor;
+	Escribir "La nota con menor calificación fue de: ", notaMenor;
+	Escribir "El total de reprobados es de: ",totalReprobados;
+	Escribir "El total de aprobados es de: ",totalAprobados;
+FinProceso
+
+
+
